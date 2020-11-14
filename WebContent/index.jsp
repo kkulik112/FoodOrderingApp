@@ -7,16 +7,10 @@
 <title>Food Ordering Application</title>
 </head>
 <body>
-<form action="loginServlet" method="post">
-<input type="submit" value="Log in">
-</form>
-
-<form action="register" method="post">
-<input type="submit" value="Create Account">
-</form>
-
-<form action="menu" method="post">
-<input type="submit" value="Menu">
+<form action="MenuPage" method="post">
+<input type="text" placeholder="E-mail" id="email" name="email" required>
+<input type="password" placeholder="Password" id="password" name="password" required>
+<input type="submit" name="submit" id="button" value="Login">
 </form>
 
 
