@@ -4,12 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Menu</title>
+<title>Welcome</title>
 </head>
 <body>
-
-<h1>Menu</h1>
-<h2>Welcome ${user_email}</h2>
-
+<h3>New account created!</h3>
+<label>E-mail : </label>
+${cust.email}
 </body>
 </html>
