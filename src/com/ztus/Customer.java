@@ -8,6 +8,7 @@ public class Customer implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String email;
 	private String password;
+	private boolean isValidUser;
 	
 	public Customer() {
 		this.email = "";
@@ -19,6 +20,12 @@ public class Customer implements Serializable{
 		this.password= password;
 	}
 	
+	public boolean isValid() {
+		return isValidUser;
+	}
+	public void setValid(boolean value) {
+		isValidUser = value;
+	}
 	
 	public String getEmail() {
 		return email;
@@ -32,5 +39,6 @@ public class Customer implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 	
 }

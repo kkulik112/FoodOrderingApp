@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome</title>
+<title>Invalid login</title>
 </head>
 <body>
-<h3>New account created!</h3>
-<label>E-mail : </label>
-${email}
+
+<h3>Wrong credentials!</h3>
+
 </body>
 </html>

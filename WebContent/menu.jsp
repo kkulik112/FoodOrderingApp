@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ page import ="com.ztus.Customer" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +9,10 @@
 </head>
 <body>
 
-<h1>Menu</h1>
-<h2>Welcome ${user_email}</h2>
+ <% Customer currentUser = (Customer) (request.getSession().getAttribute("currentSessionCustomer"));%>
+			
+  Welcome <%= currentUser.getEmail() %> 
+ 
 
 </body>
 </html>

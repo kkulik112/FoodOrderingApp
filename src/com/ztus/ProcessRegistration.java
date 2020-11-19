@@ -17,25 +17,37 @@ public class ProcessRegistration extends HttpServlet {
     }
 
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/RegisterSuccess.jsp";
+		String urlSuccess = "/RegisterSuccess.jsp";
+		String urlFail = "/register.jsp";
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		boolean userExists = RegisterDAO.alreadyExists(email);
 		
-		addUser(email, password);
-		Customer cust = new Customer(email, password);
-		
-		request.setAttribute("cust", cust);
-		getServletContext()
-		.getRequestDispatcher(url)
-		.forward(request, response);
-		
-		
+		if(!userExists) {
+			System.out.println("Creating user: " + email);
+			RegisterDAO.addUser(email, password);
+	
+			request.setAttribute("registered", "true");
+			request.setAttribute("email", email);
+			getServletContext()
+			.getRequestDispatcher(urlSuccess)
+			.forward(request, response);
+		} else {
+			System.out.println("This account already exists!");
+			request.setAttribute("error", "This user already exists!");
+			request.setAttribute("registered", "false");
+			getServletContext()
+			.getRequestDispatcher(urlFail)
+			.forward(request, response);
+		}		
 	}
 	
 	protected void addUser(String email, String password) {
