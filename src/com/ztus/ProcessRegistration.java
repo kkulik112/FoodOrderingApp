@@ -20,42 +20,49 @@ public class ProcessRegistration extends HttpServlet {
         super();
     }
 
-
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-		String urlSuccess = "/RegisterSuccess.jsp";
-		String urlFail = "/register.jsp";
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		String hash = Hash.hashPassword(password);
-		boolean userExists = RegisterDAO.alreadyExists(email);
+			String urlSuccess = "/RegisterSuccess.jsp";
+			String urlFail = "/register.jsp";
+			String email = request.getParameter("email");
+			String confirm = request.getParameter("confirm");
+			String password = request.getParameter("password");
+			String hash = Hash.hashPassword(password);
+			boolean userExists = RegisterDAO.alreadyExists(email);
+			
+			if(!password.equals(confirm)){
+				System.out.println("Password didn't match!");
+				request.setAttribute("error", "Password didn't match!");
+				getServletContext().getRequestDispatcher(urlFail).forward(request, response);
+				} else {
+					
+			if(!userExists) {
+				System.out.println("Creating user: " + email);
+				RegisterDAO.addUser(email, hash);
 		
-		if(!userExists) {
-			System.out.println("Creating user: " + email);
-			RegisterDAO.addUser(email, hash);
-	
-			request.setAttribute("registered", "true");
-			request.setAttribute("email", email);
-			getServletContext()
-			.getRequestDispatcher(urlSuccess)
-			.forward(request, response);
-		} else {
-			System.out.println("This account already exists!");
-			request.setAttribute("error", "This user already exists!");
-			request.setAttribute("registered", "false");
-			getServletContext()
-			.getRequestDispatcher(urlFail)
-			.forward(request, response);
-		}		
+				request.setAttribute("registered", "true");
+				request.setAttribute("email", email);
+				getServletContext()
+				.getRequestDispatcher(urlSuccess)
+				.forward(request, response);
+				
+			}else {
+				System.out.println("User already exists!");
+				request.setAttribute("error", "This user already exists!");
+				request.setAttribute("registered", "false");
+				getServletContext()
+				.getRequestDispatcher(urlFail)
+				.forward(request, response);
+				}	
+			}
 		}catch(Throwable theException) {
-		System.out.println(theException);
+			System.out.println(theException);
+			}
 		}
 	}
-}

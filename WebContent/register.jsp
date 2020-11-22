@@ -14,13 +14,16 @@
 <h3>Create account</h3>
 <form action="ProcessRegistration" method="post">
 <input type="text" placeholder="E-mail" id="email" name="email" required>
-<input type="password" placeholder="Password" id="password" name="password" required>
+<input class="password" type="password" placeholder="Password" id="password" name="password" required>
+<input class="password" type="password" placeholder="Confirm Password" id="confirm" name="confirm" required>
 <input type="submit" name="submit" id="button" value="Create Account">
 </form>
+
 <% String error = (String) (request.getSession().getAttribute("error"));%> 
 <% String registered = (String) (request.getSession().getAttribute("registered"));%>
-<c:if test= "${registered eq 'false'}">
-<p style="color:red;">This user already exists!</p>
+
+<c:if test= "${not empty error}">
+<p style="color:red;">${error}</p>
 </c:if>
 </body>
 </html>
