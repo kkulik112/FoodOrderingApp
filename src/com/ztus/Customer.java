@@ -8,6 +8,7 @@ public class Customer implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String email;
 	private String password;
+	private String hash;
 	private boolean isValidUser;
 	
 	public Customer() {
@@ -39,6 +40,15 @@ public class Customer implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getHash() {
+		return hash;
+	}
+
+	public void setHash(String hash) {
+		this.hash = hash;
+	}
+	
 	
 	
 }

@@ -9,9 +9,9 @@ public class RegisterDAO {
 	static Connection currentCon = null;
 	static ResultSet resultSet = null;
 	
-	public static void addUser(String email, String password) {
+	public static void addUser(String email, String hash) {
 		Statement statement = null;
-		String addQuery = "INSERT INTO customer " + "(email, password, cust_id) " + "VALUES ('" + email + "', '" + password + "', NULL)";
+		String addQuery = "INSERT INTO customer " + "(email, password, cust_id) " + "VALUES ('" + email + "', '" + hash + "', NULL)";
 		System.out.println(addQuery);
 		
 		try {

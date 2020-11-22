@@ -1,12 +1,16 @@
 package com.ztus;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.*;
 
 @WebServlet("/ProcessRegistration")
 public class ProcessRegistration extends HttpServlet {
@@ -25,15 +29,17 @@ public class ProcessRegistration extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
 		String urlSuccess = "/RegisterSuccess.jsp";
 		String urlFail = "/register.jsp";
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		String hash = Hash.hashPassword(password);
 		boolean userExists = RegisterDAO.alreadyExists(email);
 		
 		if(!userExists) {
 			System.out.println("Creating user: " + email);
-			RegisterDAO.addUser(email, password);
+			RegisterDAO.addUser(email, hash);
 	
 			request.setAttribute("registered", "true");
 			request.setAttribute("email", email);
@@ -48,25 +54,8 @@ public class ProcessRegistration extends HttpServlet {
 			.getRequestDispatcher(urlFail)
 			.forward(request, response);
 		}		
-	}
-	
-	protected void addUser(String email, String password) {
-		Connection con;
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url = "jdbc:mysql://localhost/projekt";
-			String user = "admin";
-			String pw = "haslo";
-			con = DriverManager.getConnection(url, user, pw);
-			Statement s = con.createStatement();
-			String query = "INSERT INTO customer " + "(email, password, cust_id) " + "VALUES ('" + email + "', '" + password + "', NULL)";
-			System.out.println(query);
-			s.executeUpdate(query);
-		}catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}catch (SQLException e) {
-			e.printStackTrace();
+		}catch(Throwable theException) {
+		System.out.println(theException);
 		}
 	}
-
 }

@@ -29,10 +29,12 @@ public class ProcessLogin extends HttpServlet {
 		String url = "/menu.jsp";
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		String hash = Hash.hashPassword(password);
 		
 		Customer customer = new Customer();
 		customer.setEmail(email);
 		customer.setPassword(password);
+		customer.setHash(hash);
 		
 		customer = LoginDAO.login(customer);
 		

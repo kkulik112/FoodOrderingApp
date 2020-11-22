@@ -1,5 +1,6 @@
 package com.ztus;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -9,12 +10,13 @@ public class LoginDAO {
 	static Connection currentCon = null;
 	static ResultSet resultSet = null;
 		
-	public static Customer login(Customer customer) {
+	public static Customer login(Customer customer) throws NoSuchAlgorithmException {
 		
 		Statement statement = null;
 		String email = customer.getEmail();
 		String password = customer.getPassword();
-		String searchQuery = "SELECT * FROM customer WHERE email='" + email + "' AND password='" + password + "'";
+		String hash = customer.getHash();
+		String searchQuery = "SELECT * FROM customer WHERE email='" + email + "' AND password='" + hash + "'";
 		System.out.println(searchQuery);
 		
 		try {
