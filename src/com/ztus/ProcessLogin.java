@@ -39,20 +39,19 @@ public class ProcessLogin extends HttpServlet {
 		customer = LoginDAO.login(customer);
 		
 		if(customer.isValid()) {
-			HttpSession session = request.getSession(true);
+			//HttpSession session = request.getSession(true);
+			HttpSession session = request.getSession();
+			session.setAttribute("name", email);
 			session.setAttribute("currentSessionCustomer", customer);
 			request.setAttribute("user_email", email);
-			request.setAttribute("exists", "true");
 			getServletContext()
 			.getRequestDispatcher(url)
 			.forward(request, response);
-			//response.sendRedirect("/menu.jsp");
 		} else {
 			request.setAttribute("exists", "false");
 			getServletContext()
 			.getRequestDispatcher("/index.jsp")
 			.forward(request, response);
-			//response.sendRedirect("/invalidLogin.jsp");
 		}
 		
 		/*

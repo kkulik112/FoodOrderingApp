@@ -12,7 +12,10 @@
  <% Customer currentUser = (Customer) (request.getSession().getAttribute("currentSessionCustomer"));%>
 			
   Welcome <%= currentUser.getEmail() %> 
- 
+  
+  <form action="ProcessLogout" method="post">
+  <input type="submit" class="button" id="logout" value="Sign Out">
+ </form>
 
 </body>
 </html>
