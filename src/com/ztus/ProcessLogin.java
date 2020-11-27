@@ -2,6 +2,7 @@ package com.ztus;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +27,7 @@ public class ProcessLogin extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-		String url = "/menu.jsp";
+		String url = "/MenuPage";
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String hash = Hash.hashPassword(password);
@@ -44,9 +45,12 @@ public class ProcessLogin extends HttpServlet {
 			session.setAttribute("name", email);
 			session.setAttribute("currentSessionCustomer", customer);
 			request.setAttribute("user_email", email);
+			/*
 			getServletContext()
 			.getRequestDispatcher(url)
 			.forward(request, response);
+			*/
+			response.sendRedirect("MenuPage");
 		} else {
 			request.setAttribute("exists", "false");
 			getServletContext()
