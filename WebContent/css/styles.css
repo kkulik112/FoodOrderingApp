@@ -1,0 +1,33 @@
+html{
+	height: 100vh;
+}
+
+.userName{
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+}
+
+.navBar{
+	background-color: gray;
+	max-height: 100vh;
+}
+
+.menuContainer{
+	display: grid;
+	grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
+}
+
+.menuItem{
+	border: 1px solid black;
+	margin: 2px;
+}
+
+.itemPicture{
+	display: block;
+	width: 100%;
+}
+
+.mainContainer{
+	max-height: 100vh;
+}

@@ -6,6 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/styles.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>Menu</title>
 </head>
@@ -21,16 +23,40 @@
  <% String name = list.get(0).getName(); %>
 <%  pageContext.setAttribute("menu", list); %>
 
-  Welcome <%= currentUser.getEmail() %> 
+	<div class="mainContainer">
+		<div class="row">
+			<div class="col-xs-10 col-sm-10 col-lg-10"></div>
+			<div class="col-xs-1 col-sm-1 col-lg-1 userName">
+				<%=currentUser.getName()%>
+			</div>
+			<div class="col-xs-1 col-sm-1 col-lg-1">
+				<form action="ProcessLogout" method="post">
+					<input type="submit" value="Sign Out">
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 col-sm-2 col-lg-2 navBar"></div>
+			<div class="col-xs-8 col-sm-8 col-lg-8 menuContainer">
+				<c:forEach items="${menu}" var="item">
+					<div class="menuItem">
 
-  <ul>
-  <c:forEach items="${menu}" var="item">
-  <li><c:out value="${item.toString()}"/></li>
-  </c:forEach>
-  </ul>
-  <form action="ProcessLogout" method="post">
-  <input type="submit" class="button" id="logout" value="Sign Out">
- </form>
+						<img src="<%=request.getContextPath()%>${item.getPath()}"
+							alt="${item.getName()}" height=180px width=250px
+							class="itemPicture" />
+
+						<div class="itemName">
+							<c:out value="${item.getName()}" />
+						</div>
+						<div class="itemPrice">
+							<c:out value="${item.getPrice()}" />
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+			<div class="col-xs-2 col-sm-2 col-lg-2"></div>
+		</div>
+	</div>
 
 </body>
 </html>

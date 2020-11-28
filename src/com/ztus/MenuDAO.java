@@ -24,7 +24,8 @@ public class MenuDAO {
 			resultSet = statement.executeQuery(searchQuery);
 			
 			while(resultSet.next()) {
-				MenuItem menuItem = new MenuItem(resultSet.getString("type"), resultSet.getString("name"), resultSet.getDouble("price"));
+				MenuItem menuItem = new MenuItem(resultSet.getString("type"), resultSet.getString("name"), resultSet.getDouble("price"),
+						resultSet.getString("path"));
 				itemList.add(menuItem);
 			}
 			

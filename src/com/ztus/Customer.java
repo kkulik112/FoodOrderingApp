@@ -11,6 +11,11 @@ public class Customer implements Serializable{
 	private String hash;
 	private boolean isValidUser;
 	
+	public String getName() {
+		int atIndex = this.getEmail().indexOf('@');
+		return this.getEmail().substring(0, atIndex);
+	}
+	
 	public Customer() {
 		this.email = "";
 		this.password= "";
