@@ -16,11 +16,24 @@ html{
 .menuContainer{
 	display: grid;
 	grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
+	max-width: 80%;
 }
 
 .menuItem{
+	position: relative;
 	border: 1px solid black;
 	margin: 2px;
+	background-color: white;
+	transition: 0.5s;
+}
+
+.menuItem:hover{
+	transform: scale(1.2);
+	box-shadow: 2px 2px 2px black;
+	background: white;
+	z-index: 2;
+	cursor: pointer;
+	
 }
 
 .itemPicture{
@@ -29,7 +42,7 @@ html{
 }
 
 .mainContainer{
-	max-height: 100vh;
+	max-height: 100%;
 }
 body{
 	background: #ffcc99;
