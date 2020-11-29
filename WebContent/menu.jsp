@@ -19,7 +19,7 @@
 
 
  <% Customer currentUser = (Customer) (request.getSession().getAttribute("currentSessionCustomer"));%>
- <% ArrayList<MenuItem> list = (ArrayList<MenuItem>) request.getSession().getAttribute("menuItems"); %>
+ <% ArrayList<MenuItem> list = (ArrayList<MenuItem>) request.getSession().getAttribute("menuItems"); %>  
  <% String name = list.get(0).getName(); %>
 <%  pageContext.setAttribute("menu", list); %>
 
