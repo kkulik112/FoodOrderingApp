@@ -53,10 +53,19 @@
 						</div>
 					</div>
 				</c:forEach>
+				<div class="modal-bg">
+					<div class="modalWindow">
+						<span id="itemName"><h2>Menu Item Name</h2></span>
+						<button class="cartButton">Add to cart</button>
+						<span class="closeButton">X</span>
+					</div>
+				</div>
 			</div>
 			<div class="col-xs-2 col-sm-2 col-lg-2"></div>
 		</div>
 	</div>
+	
+<script type="text/javascript" src='<c:url value="/js/app.js"/>'></script>
 
 </body>
 </html>
