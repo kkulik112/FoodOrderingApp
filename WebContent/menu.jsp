@@ -39,7 +39,7 @@
 			<div class="col-xs-2 col-sm-2 col-lg-2 navBar"></div>
 			<div class="col-xs-8 col-sm-8 col-lg-8 menuContainer">
 				<c:forEach items="${menu}" var="item">
-					<div class="menuItem">
+					<div class="menuItem" id="${item.getName()}">
 
 						<img src="<%=request.getContextPath()%>${item.getPath()}"
 							alt="${item.getName()}" height=180px width=250px
@@ -55,6 +55,7 @@
 				</c:forEach>
 				<div class="modal-bg">
 					<div class="modalWindow">
+						<img id='modalImage' src='' width=100% height=60%>
 						<span id="itemName"><h2>Menu Item Name</h2></span>
 						<button class="cartButton">Add to cart</button>
 						<span class="closeButton">X</span>
