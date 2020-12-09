@@ -5,7 +5,7 @@
 <head>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/login.css">
 <meta charset="UTF-8">
-<title>Food Ordering Application</title>
+<title>GoodFood App</title>
 </head>
 <body>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

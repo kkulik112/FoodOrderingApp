@@ -7,7 +7,7 @@ body{
 	height:50px;
 	weight:50px;
 	margin:0;
-	margin-top: 30px;
+	margin-top: .5rem;
 }
 
 .registermenu{
@@ -37,7 +37,6 @@ body{
 	display:flex;
 	flex-direction:column;
 	align-items: center;
-	margin-top: 30px;
 
 }
 .register{
@@ -54,7 +53,7 @@ body{
 	text-align: center;
 	color: #FFFFFF;	
 	margin-bottom:20px;
-	margin-top:20px;
+	margin-top:1rem;
 }
 
 .fillin{
@@ -62,7 +61,7 @@ body{
     background: #FFFFFF;
     height: 35px;
     border: none;
-    margin-bottom: 30px;
+    margin-bottom: 1.25rem;
     font-family: Montserrat;
 	font-style: normal;
 	font-weight: normal;
@@ -71,13 +70,18 @@ body{
 	display: flex;
 	align-items: center;
 	color: #7570AA;
-
+	border-radius: 15px;
 }
+
+.fillin:focus{
+	outline: none;
+}
+
 .password{
 	background: #FFFFFF;
     height: 35px;
     border: none;
-    margin-bottom: 30px;
+    margin-bottom: 1.25rem;
     font-family: Montserrat;
 	font-style: normal;
 	font-weight: normal;
@@ -86,7 +90,29 @@ body{
 	display: flex;
 	align-items: center;
 	color: #7570AA;
+	border-radius: 15px;
 }
+
+input{
+	text-align: center;
+}
+
+.password:focus{
+	outline: none;
+}
+
+.fillin::placeholder{
+	text-align: center;
+}
+
+.password::placeholder{
+	text-align: center;
+}
+
+select{
+	text-align-last: center;
+}
+
 .submit{
 	background: #FFFFFF;
 	border: 1px solid #FFFFFF;
@@ -96,12 +122,36 @@ body{
     border: none;
     margin-left:60px;
     margin-right:60px;
-    margin-bottom:30px;
+    margin-bottom:.5rem;
     font-family: Montserrat;
 	font-style: normal;
 	font-weight: 500;
 	font-size: 20px;
 	line-height: 37px;
 	text-align: center;
+	color: #050041;
+}
+
+.backToLogin{
+	background: #FFFFFF;
+	border: 1px solid #FFFFFF;
+	box-sizing: border-box;
+	border-radius: 15px;
+	height: 40px;
+    border: none;
+    margin-left:60px;
+    margin-right:60px;
+    margin-bottom:.5rem;
+    font-family: Montserrat;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 37px;
+	text-align: center;
+	color: #050041;
+	cursor: pointer;
+}
+
+a:focus,a:visited{
 	color: #050041;
 }

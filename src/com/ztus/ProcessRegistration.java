@@ -33,6 +33,13 @@ public class ProcessRegistration extends HttpServlet {
 			String email = request.getParameter("email");
 			String confirm = request.getParameter("confirm");
 			String password = request.getParameter("password");
+			String name = request.getParameter("name");
+			String lastname = request.getParameter("lastname");
+			String phonenumber = request.getParameter("phonenumber");
+			String province = request.getParameter("province");
+			String country = request.getParameter("country");
+			String city = request.getParameter("city");
+			String zipcode = request.getParameter("zipcode");
 			String hash = Hash.hashPassword(password);
 			boolean userExists = RegisterDAO.alreadyExists(email);
 			
@@ -44,7 +51,7 @@ public class ProcessRegistration extends HttpServlet {
 					
 			if(!userExists) {
 				System.out.println("Creating user: " + email);
-				RegisterDAO.addUser(email, hash);
+				RegisterDAO.addUser(email,hash,name,lastname,phonenumber,province,country,city,zipcode);
 		
 				request.setAttribute("registered", "true");
 				request.setAttribute("email", email);
