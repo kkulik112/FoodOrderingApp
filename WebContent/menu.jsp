@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/styles.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <meta charset="UTF-8">
@@ -22,11 +23,21 @@
  <% ArrayList<MenuItem> list = (ArrayList<MenuItem>) request.getSession().getAttribute("menuItems"); %>  
  <% String name = list.get(0).getName(); %>
 <%  pageContext.setAttribute("menu", list); %>
+<% String sessionName = (String) (request.getSession().getId()); %>
 
 	<div class="mainContainer">
 		<div class="row">
+			<!-- <form name = "cartForm" type="hidden" method="post" id="cartForm" action="ProcessCart"> -->
+			<input type="hidden" id="cartItem" name="cartItem" value=""> 
+			<!--</form>-->
+			
 			<div class="col-xs-10 col-sm-10 col-lg-10"></div>
 			<div class="col-xs-1 col-sm-1 col-lg-1 userName">
+			<div id="cartCount">
+			<a href="cart.jsp">Cart: <%=currentUser.getCart().getSize() %></a>
+			
+			</div>
+				
 				<%=currentUser.getName()%>
 			</div>
 			<div class="col-xs-1 col-sm-1 col-lg-1">
@@ -57,6 +68,7 @@
 					<div class="modalWindow">
 						<img id='modalImage' src='' width=100% height=60%>
 						<span id="itemName"><h2>Menu Item Name</h2></span>
+						<span id="itemPrice"><h2>Price</h2></span>
 						<button class="cartButton">Add to cart</button>
 						<span class="closeButton">X</span>
 					</div>

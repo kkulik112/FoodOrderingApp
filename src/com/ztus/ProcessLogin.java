@@ -41,9 +41,10 @@ public class ProcessLogin extends HttpServlet {
 		if(customer.isValid()) {
 			//HttpSession session = request.getSession(true);
 			HttpSession session = request.getSession();
+			System.out.println("Session name" + session.getId());
 			session.setAttribute("name", email);
 			session.setAttribute("currentSessionCustomer", customer);
-			request.setAttribute("user_email", email);
+			//request.setAttribute("user_email", email);
 			/*
 			getServletContext()
 			.getRequestDispatcher(url)

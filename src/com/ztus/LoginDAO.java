@@ -16,7 +16,7 @@ public class LoginDAO {
 		String email = customer.getEmail();
 		String password = customer.getPassword();
 		String hash = customer.getHash();
-		String searchQuery = "SELECT * FROM customer WHERE email='" + email + "' AND password='" + hash + "'";
+		String searchQuery = "SELECT * FROM konto WHERE email='" + email + "' AND password='" + hash + "'";
 		System.out.println(searchQuery);
 		
 		try {

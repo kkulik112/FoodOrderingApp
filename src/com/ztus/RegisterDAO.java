@@ -28,8 +28,10 @@ public class RegisterDAO {
 			}
 			String insertUserDetails = "INSERT INTO klient (imie, nazwisko, numerTelefonu, wojewodztwo, kraj, miasto, kodPocztowy, konto_id) VALUES "
 					+ "('"+name+"','"+lastname+"','"+phonenumber+"','"+province+"','"+country+"','"+city+"','"+zipcode+"',"+account_id+")";
+			String accountDetails = "INSERT INTO konto (email, password) VALUES " + "('"+email+"','"+hash+")";
 			System.out.println(new String(insertUserDetails.getBytes(charset), charset));
 			statement.executeUpdate(insertUserDetails);
+			statement.executeUpdate(accountDetails);
 		}catch(Exception e) {
 			System.out.println("Some exception has occurred." + e);
 		}

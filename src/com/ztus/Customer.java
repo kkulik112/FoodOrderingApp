@@ -1,6 +1,7 @@
 package com.ztus;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public class Customer implements Serializable{
@@ -10,6 +11,8 @@ public class Customer implements Serializable{
 	private String password;
 	private String hash;
 	private boolean isValidUser;
+	//private ArrayList<MenuItem> cart;
+	private Cart cart;
 	
 	public String getName() {
 		int atIndex = this.getEmail().indexOf('@');
@@ -19,13 +22,32 @@ public class Customer implements Serializable{
 	public Customer() {
 		this.email = "";
 		this.password= "";
+		//this.cart = new ArrayList<>();
+		this.cart = new Cart();
 	}
 	
 	public Customer(String email, String password) {
 		this.email = email;
 		this.password= password;
+		//this.cart = new ArrayList<>();
+		this.cart = new Cart();
 	}
 	
+	/*
+	public ArrayList<MenuItem> getCart(){
+		return this.cart;
+	}
+	*/
+	
+	public Cart getCart() {
+		return this.cart;
+	}
+	
+	/*
+	public void addToCart(MenuItem item) {
+		this.cart.add(item);
+	}
+	*/
 	public boolean isValid() {
 		return isValidUser;
 	}
