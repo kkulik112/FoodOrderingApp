@@ -13,8 +13,8 @@ public class ConnectionManager {
 	try {
 		String url = "jdbc:mysql://localhost/projekt";
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		String user = "admin";
-		String pw = "haslo";
+		String user = "root";
+		String pw = "root";
 		connection = DriverManager.getConnection(url, user, pw);
 	}catch(SQLException e) {
 		e.printStackTrace();
