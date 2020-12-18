@@ -47,12 +47,15 @@ public class ProcessCart extends HttpServlet {
 		Customer customer = (Customer) request.getSession().getAttribute("currentSessionCustomer");
 		String receivedItemName = request.getParameter("name"); 
 		String operation = request.getParameter("operation");
+		String index = request.getParameter("index");
 		try {
 			MenuItem receivedObject = MenuDAO.getMenuItem(receivedItemName);
 			if(operation.equals("add")) {
 				customer.getCart().addItem(receivedObject);
-				//response.sendRedirect("/MenuPage");
-				
+				//response.sendRedirect("/MenuPage");	
+			}
+			if(operation.equals("remove")) {
+				customer.getCart().removeItem(Integer.parseInt(index));
 			}
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();

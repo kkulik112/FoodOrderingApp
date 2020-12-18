@@ -24,9 +24,11 @@ public class Cart {
 		this.content.add(item);
 	}
 	
-	public void removeItem(MenuItem item) {
+	public void removeItem(int index) {
 		//TODO probably won't work since it would not be the same object
-		this.content.remove(item);
+		System.out.println("removing element " + index);
+		System.out.println("Current size: " + content.size());
+		this.content.remove(index);
 	}
 	
 	public double getTotal() {
