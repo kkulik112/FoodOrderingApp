@@ -68,24 +68,35 @@
 		<div id="footer">
 			<div id="navigation">
 				<button id="back-btn" class="cart-button">Back</button>
-				<c:choose>
+					
+				<form method="post" action="https://secure.payu.com/api/v2_1/orders">
+    			<input type="hidden" name="continueUrl" value="http://shop.url/continue">
+    			<input type="hidden" name="currencyCode" value="PLN">
+    			<input type="hidden" name="customerIp" value="123.123.123.123">
+    			<input type="hidden" name="description" value="Order description">
+    			<input type="hidden" name="merchantPosId" value="145227">
+    			<input type="hidden" name="notifyUrl" value="http://shop.url/notify">
+    			<input type="hidden" name="products[0].name" value="Product 1">
+    			<input type="hidden" name="products[0].quantity" value="1">
+    			<input type="hidden" name="products[0].unitPrice" value="1000">
+    			<input type="hidden" name="totalAmount" value="1000">
+    			<input type="hidden" name="OpenPayu-Signature" value="sender=145227;algorithm=SHA-256;signature=bc94a8026d6032b5e216be112a5fb7544e66e23e68d44b4283ff495bdb3983a8">
+    			<c:choose>
 				<c:when test="${list.size() != '0' }">
-				<button id="pay-btn" class="cart-button">Pay</button>
+    			<button id="pay-btn" class="cart-button" type="submit" formtarget="_blank">Proceed</button>	
 				</c:when>
 				<c:otherwise>
-				<button id="pay-btn" class="cart-button" disabled>Pay</button>
+				<button id="pay-btn" class="cart-button" type="submit" formtarget="_blank" disabled>Proceed</button>
 				</c:otherwise>
 				</c:choose>
-				
+				</form >		
 			</div>
 			<p id="total-price"><%=cart.getTotal()%></p>
 		</div>
 
 	</div>
 	
-	
 	<script type="text/javascript" src="js/cart.js"></script>
-
 
 </body>
 </html>

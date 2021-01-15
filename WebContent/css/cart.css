@@ -31,8 +31,8 @@
 #footer{
     position: absolute;
     margin: auto;
-    top: 90%;
-    bottom: 20px;
+    height: 30%;
+    top: 70%;
     left: 0;
     right: 0;
 }
@@ -82,19 +82,19 @@
 
 #total-price{
     position: absolute;
-    left: 0;
+    left: 25%;
     right: 0;
-    top: 20%;
-    /* bottom: 35%; */
+    top: 50%;
     text-align: center;
     font-size: 24px;
+    width: 50%;
     
 }
 
 #navigation{
     position: absolute;
     display: block;
-    bottom: 35%;
+    bottom: 40%;
     width: 100%;
 }
 
@@ -112,6 +112,6 @@
 .cart-button{
     background-color: khaki;
     border-radius: 10%;
-    width: 4rem;
+    width: 5rem;
     height: 2rem;
 }

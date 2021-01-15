@@ -4,9 +4,11 @@ let menuItems = document.querySelectorAll(".cart-item");
 let counter = 0;
 let totalPrice = document.querySelector(".totalPrice");
 const payBtn = document.querySelector("#pay-btn");
-const bottomHr = document.querySelector("#bottom-hr");
+const backBtn = document.querySelector('#back-btn');
 
-console.log("asd");
+backBtn.addEventListener('click', () => {
+	location.href = 'menu.jsp';
+})
 
 for(let item of menuItems){
 	
@@ -16,7 +18,7 @@ for(let item of menuItems){
 	button.innerHTML = '<i class="material-icons delete">delete</i>';
 	item.appendChild(button);
 	
-	button.addEventListener("click", function(){
+	button.addEventListener("click", () => {
 		button.closest(".cart-item").remove();
 		
 		
